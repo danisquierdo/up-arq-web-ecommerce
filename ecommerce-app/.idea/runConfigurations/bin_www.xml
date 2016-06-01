@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="bin\www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="$PROJECT_DIR$/../ecommerce-app/bin/www" working-dir="$PROJECT_DIR$/../ecommerce-app">
+  <configuration default="false" name="bin\www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$/../../up-arq-web-ecommerce/ecommerce-app/">
     <envs>
       <env name="DEBUG" value="ecoomerce-app:*" />
     </envs>
-    <browser url="http://localhost:3000/" />
+    <browser with-js-debugger="true" url="http://localhost:3000/" />
     <method />
   </configuration>
 </component>
