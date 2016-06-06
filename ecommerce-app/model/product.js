@@ -33,8 +33,15 @@ var productSchema = new Schema({
     description:  {
         type: String,
         required: true
-    }
-}, {
+    },
+    additionalInfo: String,
+    overview: {
+        type: String,
+        required: true
+    },
+    quantity: Number
+},
+{
     timestamps: true
 });
 

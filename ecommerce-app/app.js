@@ -7,8 +7,31 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var products = require('./routes/products');
+var user = require('./model/user');
+
+//login and connect to mongodb
+var mongoose = require('mongoose');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
+var config = require('./config');
 
 var app = express();
+
+//connect to mongodb
+mongoose.connect(config.mongoUrl);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  // we're connected!
+  console.log("Connected correctly to server");
+});
+
+// passport config
+app.use(passport.initialize());
+passport.use(new localStrategy(user.authenticate()));
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,8 +45,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//add new routes here
 app.use('/', routes);
 app.use('/users', users);
+app.use('/products',products);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

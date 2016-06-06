@@ -1,5 +1,94 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .banner
+    .container
+      .header-top
+        .header-top-left
+          .box_11
+            a(href='/')
+              h4
+                p Cart:
+                  span.simpleCart_total
+                  |(
+                  span#simpleCart_quantity.simpleCart_quantity
+                  | items)
+              img(src="/images/bag.png")
+              .clearfix
+          p.empty
+            a.simpleCart_empty(href='#') Carrito Vacío
+          .clearfix
+        .header-top-right
+          ul.header-user-info
+            a.login(href='#')
+              i.user
+              li.user-desc Cuenta
+          .clearfix
+      .header-bottom
+        .logo
+          h1
+            a(href='#')
+              span.m_1 R
+              |elojes
+        .menu
+          ul.megamenu.skyblue
+            li
+              a.color4(href='#') Categorías
+                .megapanel
+                  .row
+                    .col1
+                      .h_nav
+                        h4 Hombres
+                        ul
+                          li
+                            a(href='#') Relojes
+                            a(href='#') Relojes
+                            a(href='#') Relojes
+                            a(href='#') Relojes
+                    .col1
+                      .h_nav
+                        h4 Mujeres
+                        ul
+                          li
+                            a(href='#') Relojes
+                            a(href='#') Relojes
+                            a(href='#') Relojes
+                            a(href='#') Relojes
+                    .col2
+                      .h_nav
+                        h4 Populares
+                        ul
+                          li
+                            .p_left
+                              img.img-responsive(src='/images/p1.jpg')
+                            .p-right
+                              h4 Un reloj
+                              span.item-cat
+                                small
+                                  a(href='#') Reloj
+                              span.price 2.99
+                            .clearfix
+                          li
+                            .p_left
+                              img.img-responsive(src='/images/p1.jpg')
+                            .p-right
+                              h4 Un reloj
+                              span.item-cat
+                                small
+                                  a(href='#') Reloj
+                              span.price 2.99
+                            .clearfix
+
+
+
+            li
+              a.color10(href='#') Marcas
+            li.active.grid
+              a.color3(href='#') Promos
+            li
+              a.color7(href='#') Novedades
+            .clearfix
+  .main
+     .container
+       ul.content-home
+         

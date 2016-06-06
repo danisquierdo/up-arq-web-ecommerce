@@ -2,12 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var Products = require('../models/products');
+var Products = require('../model/product');
 
 var Verify = require('./verify');
 
 var productRouter = express.Router();
 productRouter.use(bodyParser.json());
+
+//TODO: CRUD solo debe estar disponible para el admin!!
 
 productRouter.route('/')
 .get(Verify.verifyOrdinaryUser, function (req, res, next) {
@@ -19,7 +21,7 @@ productRouter.route('/')
 
 .post(Verify.verifyOrdinaryUser, function (req, res, next) {
     Products.create(req.body, function (err, product) {
-        if (err) throw err;
+            if (err) throw err;
         console.log('Product created!');
         var id = product._id;
 
