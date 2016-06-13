@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
       products.find().sort({_id:-1}).limit(3).exec(function(err,prod){
           if (err)  throw err;
 
-          promotions.find({},function(err,promo){
+          promotions.find({active: true},function(err,promo){
               if (err)  throw err;
 
               res.render('index',
