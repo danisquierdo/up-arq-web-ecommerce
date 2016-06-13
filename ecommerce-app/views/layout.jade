@@ -2,16 +2,42 @@ doctype html
 html
   head
     title= title
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/megamenu.css')
     link(rel='stylesheet', href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700')
     link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Dorsa')
-    script(src="/js/jquery-1.11.1.min.js")
-    script(src="/js/megamenu.js")
-    script(src="/js/script.js")
-    script(src="/js/jquery.easydropdown.js")
-    script(src="/js/easyReponsiveTabs.js")
-    script(src="/js/simpleCart.min.js")
+    script(src="/javascripts/jquery-1.11.1.min.js")
+    link(rel='stylesheet', href='/stylesheets/megamenu.css')
+    script(src="/javascripts/megamenu.js")
+    <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+    script(src="/javascripts/jquery.easydropdown.js")
+    script(src="/javascripts/simpleCart.min.js")
+    script(src="/javascripts/classie1.js")
   body
     block content
+    .footer
+      .cssmenu
+        ul
+          li
+            a(href='#') Privacidad
+          li
+            a(href='#') Términos y Condiciones
+          li
+            a(href='#') Sobre Nosotros
+          li
+            a(href='#') Contacto
+      ul.social
+        li
+          a(href='#')
+            i.instagram
+        li
+          a(href='#')
+            i.fb
+        li
+          a(href='#')
+            i.tw
+      .clearfix
+      .copy
+        p &copy; 2015 Watches. All Rights Reserved | Design by W3layouts

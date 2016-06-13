@@ -1,0 +1,13 @@
+Como hacer backup y levantar backup de mongodb.
+
+- dejar corriendo el servidor de mongo (C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe)
+- abrir cmd de windows como administrador
+- ir a la carpeta bin de mongodb (C:\Program Files\MongoDB\Server\3.2\bin)
+
+para copiar la base de datos:
+	mongodump --db arq-web --out path
+(siendo path donde quieren guardar los archivos)
+
+para restaurar:
+	mongorestor --db arq-web path\arq-web
+(path es el mismo directorio de antes, o si están restaurando del repo es el directorio del repo /mongodump)
