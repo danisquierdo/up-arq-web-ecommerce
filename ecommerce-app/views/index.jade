@@ -3,8 +3,8 @@ extends layout
 block content
   .banner
     .container
-      .header-top
-        .header-top-left
+      .header_top
+        .header_top_left
           .box_11
             a(href='/')
               h4
@@ -18,13 +18,14 @@ block content
           p.empty
             a.simpleCart_empty(href='#') Carrito Vacío
           .clearfix
-        .header-top-right
-          ul.header-user-info
+        .header_top_right
+          ul.header_user_info
             a.login(href='#')
               i.user
-              li.user-desc Cuenta
+              li.user_desc Cuenta
           .clearfix
-      .header-bottom
+        .clearfix
+      .header_bottom
         .logo
           h1
             a(href='#')
@@ -68,7 +69,7 @@ block content
      .container
        ul.content-home
         each promo in promos
-          li.col-sm-t
+          li.col-sm-4
             a.item-link(href=promo.url)
               .bannerBox
                 img.item-img(src="/images/"+promo.image width='100%' height='100%')
@@ -90,3 +91,4 @@ block content
                 a(href=cat.url)
                   img.img-responsive(src="/images/"+cat.image)
                   span=cat.name
+            .clearfix

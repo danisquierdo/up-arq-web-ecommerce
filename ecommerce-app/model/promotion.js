@@ -9,13 +9,13 @@ var promotionSchema = new Schema({
     url: String,
     image: String,
     active:
-        {
-            type: Boolean,
-            default: false
-        }
+    {
+        type: Boolean,
+        default: false
+    }
 });
 
-var Promotion = mongoose.model('promotions', promotionSchema);
+var Promotion = mongoose.model('Promotion', promotionSchema, 'promotions');
 
 // make this available to our Node applications
 module.exports = Promotion;

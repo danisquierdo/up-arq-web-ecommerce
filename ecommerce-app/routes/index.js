@@ -12,10 +12,10 @@ router.get('/', function(req, res, next) {
   categories.find({}, function (err, cat) {
     if (err)  throw err;
 
-      products.find().sort('date').limit(3).exec(function(err,prod){
+      products.find().sort({_id:-1}).limit(3).exec(function(err,prod){
           if (err)  throw err;
 
-          promotions.find({ }, function(err,promo){
+          promotions.find({},function(err,promo){
               if (err)  throw err;
 
               res.render('index',
