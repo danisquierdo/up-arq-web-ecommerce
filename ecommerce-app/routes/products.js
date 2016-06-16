@@ -68,7 +68,7 @@ productRouter.route('/:productId')
 
 router.get('/:id', function(req,res){
 
-    categories.find({}, function (err, cat) {
+    categories.find({},function (err, cat) {
         if (err)  throw err;
 
         products.find().sort({_id:-1}).limit(3).exec(function(err,prod){

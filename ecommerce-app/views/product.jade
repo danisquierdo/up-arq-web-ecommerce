@@ -55,7 +55,7 @@ block content
                                                     each prod in latest
                                                         li
                                                             .p_left
-                                                                img.img-responsive(src="/images/" + prod.image)
+                                                                img.img-responsive(src="/images/" + prod.images[0])
                                                             .p-right
                                                                 h4=prod.name
                                                                 span.item-cat
@@ -74,10 +74,10 @@ block content
                 .single_left
                     .labout.span_1_of_a1
                         .flexslider
-                            each img in product.images
-                                ul.slides
-                                    li
-                                        img(src='/images/'+img.src)
+                            ul.slides
+                                each img in product.images
+                                    li(data-thumb='/images/'+img)
+                                        img(src='/images/'+img)
                         .clearfix
                     .cont1.span_2_of_a1.simpleCart_shelfItem
                         h1= product.name
@@ -119,7 +119,7 @@ block content
                         a.btn.btn-primary.btn-normal.btn-inline.btn-form.button.item_add.item_1(href='#', target='_self') Comprar
                     .clearfix
                 .sap_tabs
-                    .horizontalTab(style='display: block; width: 100%; margin: 0px;')
+                    #horizontalTab(style='display: block; width: 100%; margin: 0px;')
                         ul.resp-tabs-list
                             li.resp-tab-item(aria-controls='tab_item-0',role='tab')
                                 span Descripción
@@ -144,7 +144,7 @@ block content
                                         each review in product.reviews
                                             li
                                                 a(href='#')= review.review
-            .col-md-3-tabs
+            .col-md-3.tabs
                 h3.m_1 Productos Relacionados
                 ul.product
                     li.product_img

@@ -4,14 +4,6 @@ var Schema = mongoose.Schema;
 
 require('mongoose-currency').loadType(mongoose);
 
-// create a schema
-var subcategorySchema = new Schema({
-    name: String,
-    url: String
-});
-
-var Subcategory = mongoose.model('subcategories', subcategorySchema, 'subcategories');
-
 var categorySchema = new Schema({
     name: {
         type: String,
@@ -21,7 +13,7 @@ var categorySchema = new Schema({
     description: String,
     image: String,
     url: String,
-    subcategories: [Subcategory]
+    subcategories: [{name: String, url: String}]
 });
 
 // create a model using schema
