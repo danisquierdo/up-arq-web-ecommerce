@@ -5,6 +5,21 @@ var Schema = mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
 var Currency = mongoose.Types.Currency;
 
+var productImageSchema = new Schema({
+    src: String
+});
+
+var Image = mongoose.model('Image', productImageSchema);
+
+var productReviewSchema = new Schema({
+    user: String,
+    date: String,
+    stars: Number,
+    review: String
+});
+
+var Review = mongoose.model('Review', productReviewSchema);
+
 // create a schema
 var productSchema = new Schema({
     name: {
@@ -17,6 +32,7 @@ var productSchema = new Schema({
         required: true,
         default: ''
     },
+    images: [Image],
     category:  {
         type: String,
         required: true,
@@ -30,6 +46,7 @@ var productSchema = new Schema({
     price: {
         type: Currency 
     },
+    discount: Number,
     description:  {
         type: String,
         required: true
@@ -39,7 +56,9 @@ var productSchema = new Schema({
         type: String,
         required: true
     },
-    quantity: Number
+    quantity: Number,
+    reviews: [Review],
+    available: Boolean
 },
 {
     timestamps: true

@@ -10,7 +10,7 @@ var subcategorySchema = new Schema({
     url: String
 });
 
-var Subcategory = mongoose.model('subcategories', subcategorySchema);
+var Subcategory = mongoose.model('subcategories', subcategorySchema, 'subcategories');
 
 var categorySchema = new Schema({
     name: {

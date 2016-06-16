@@ -1,17 +1,18 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+var router = express.Router();
 var mongoose = require('mongoose');
+var categories =  require('../model/category');
+var products = require('../model/product');
 
-var Products = require('../model/product');
-
-var Verify = require('./verify');
-
-var productRouter = express.Router();
-productRouter.use(bodyParser.json());
+//var bodyParser = require('body-parser');
+//var Verify = require('./verify');
+//var productRouter = express.Router();
+//productRouter.use(bodyParser.json());
 
 //TODO: CRUD solo debe estar disponible para el admin!!
 
-productRouter.route('/')
+//Código comentado para copiar. No sirve porque no renderiza views y porque pide login
+/*productRouter.route('/')
 .get(Verify.verifyOrdinaryUser, function (req, res, next) {
     Products.find({}, function (err, product) {
         if (err) throw err;
@@ -62,12 +63,33 @@ productRouter.route('/:productId')
     Products.findByIdAndRemove(req.params.productId, function (err, resp) {        if (err) throw err;
         res.json(resp);
     });
-})
+})*/
+
+
+router.get('/:id', function(req,res){
+
+    categories.find({}, function (err, cat) {
+        if (err)  throw err;
+
+        products.find().sort({_id:-1}).limit(3).exec(function(err,prod){
+            if (err)  throw err;
+
+            products.findById(req.params.id, function (err, product) {
+                if (err) throw err;
+
+                res.render('product',
+                    {
+                        categories: cat,
+                        latest: prod,
+                        product: product
+                    });
+
+            });
+        });
+    });
+});
 
 
 
 
-
-
-
-module.exports = productRouter;
+module.exports = router;
