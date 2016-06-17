@@ -74,7 +74,7 @@ router.get('/:id', function(req,res){
         products.find().sort({_id:-1}).limit(3).exec(function(err,prod){
             if (err)  throw err;
 
-            products.findById(req.params.id, function (err, product) {
+            products.findById(req.params.id).populate('related').exec(function (err, product) {
                 if (err) throw err;
 
                 res.render('product',
@@ -88,7 +88,6 @@ router.get('/:id', function(req,res){
         });
     });
 });
-
 
 
 

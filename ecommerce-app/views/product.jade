@@ -146,26 +146,17 @@ block content
                                                 a(href='#')= review.review
             .col-md-3.tabs
                 h3.m_1 Productos Relacionados
-                ul.product
-                    li.product_img
-                        img.img-responsive(src='/images/m5.jpg')
-                    li.product_desc
-                        h4
-                            a(href='#') NOMBRE
-                            p.single_price $100
-                            a.link-cart(href='#') Agregar a favoritos
-                            a.link-cart(href='#') Comprar
-                    .clearfix
-                ul.product
-                    li.product_img
-                        img.img-responsive(src='/images/m5.jpg')
-                    li.product_desc
-                        h4
-                            a(href='#') NOMBRE
-                            p.single_price $100
-                            a.link-cart(href='#') Agregar a favoritos
-                            a.link-cart(href='#') Comprar
-                    .clearfix
+                for rel in product.related
+                    ul.product
+                        li.product_img
+                            img.img-responsive(src='/images/'+rel.images[0])
+                        li.product_desc
+                            h4
+                                a(href='#')= rel.name
+                                p.single_price= rel.price
+                                a.link-cart(href='#') Agregar a favoritos
+                                a.link-cart(href='#') Comprar
+                        .clearfix
             .clearfix
 
 

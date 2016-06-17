@@ -37,7 +37,8 @@ var productSchema = new Schema({
     },
     quantity: Number,
     reviews: [{review:String}],
-    available: Boolean
+    available: Boolean,
+    related: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 },
 {
     timestamps: true
