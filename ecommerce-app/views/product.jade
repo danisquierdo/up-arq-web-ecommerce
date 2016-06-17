@@ -1,0 +1,166 @@
+//
+   Created by Dany on 6/16/2016.
+
+extends layout
+
+block content
+    .men_banner
+        .container
+            .header_top
+                .header_top_left
+                    .box_11
+                        a(href='/')
+                            h4
+                                p Cart:
+                                    span.simpleCart_total
+                                    | (
+                                    span#simpleCart_quantity.simpleCart_quantity
+                                    | items)
+                                img(src="/images/bag.png")
+                                .clearfix
+                    p.empty
+                        a.simpleCart_empty(href='#') Carrito Vacío
+                    .clearfix
+                .header_top_right
+                    ul.header_user_info
+                        a.login(href='#')
+                            i.user
+                            li.user_desc Cuenta
+                    .clearfix
+                .clearfix
+            .header_bottom
+                .logo
+                    h1
+                        a(href='#')
+                            span.m_1 R
+                            | elojes
+                .menu
+                    ul.megamenu.skyblue
+                        li
+                            a.color4(href='#') Productos
+                                .megapanel
+                                    .row
+                                        each cat in categories
+                                            .col1
+                                                .h_nav
+                                                    h4= cat.name
+                                                    ul
+                                                        each sub in cat.subcategories
+                                                            li
+                                                                a(href=sub.url)=sub.name
+                                        .col2
+                                            .h_nav
+                                                h4 Últimos
+                                                ul
+                                                    each prod in latest
+                                                        li
+                                                            .p_left
+                                                                img.img-responsive(src="/images/" + prod.images[0])
+                                                            .p-right
+                                                                h4=prod.name
+                                                                span.item-cat
+                                                                    small
+                                                                        a(href='#')=prod.category
+                                                                span.price=prod.price
+                                                            .clearfix
+                        li.active.grid
+                            a.color3(href='#') Promos
+                        li
+                            a.color7(href='#') Novedades
+                        .clearfix
+    .men
+        .container
+            .col-md-9.single_top
+                .single_left
+                    .labout.span_1_of_a1
+                        .flexslider
+                            ul.slides
+                                each img in product.images
+                                    li(data-thumb='/images/'+img)
+                                        img(src='/images/'+img)
+                        .clearfix
+                    .cont1.span_2_of_a1.simpleCart_shelfItem
+                        h1= product.name
+                        p.availability Disponibilidad:
+                            span.color
+                                if product.available
+                                    | En Stock
+                                else
+                                    | No Disponible
+                        .price_single
+                            if product.discount > 0
+                                span.reducedfrom= product.price*(product.discount/100)
+                            span.amount.item_price.actual= product.price
+                        h2.quick Overview:
+                        p.quick_desc= product.overview
+                        .wish-list
+                            ul
+                                li.wish
+                                    a(href='#') Agregar a favoritos
+                        if product.available
+                            .quantity_box
+                                ul.product-qty
+                                    span Quantity:
+                                    select
+                                        -n=1
+                                        while n <= product.quantity
+                                            option= n++
+                                ul.single_social
+                                    li
+                                        a(href='#')
+                                            i.fb1
+                                    li
+                                        a(href='#')
+                                            i.tw1
+                                    li
+                                        a(href='#')
+                                            i.g1
+                                .clearfix
+                        a.btn.btn-primary.btn-normal.btn-inline.btn-form.button.item_add.item_1(href='#', target='_self') Comprar
+                    .clearfix
+                .sap_tabs
+                    #horizontalTab(style='display: block; width: 100%; margin: 0px;')
+                        ul.resp-tabs-list
+                            li.resp-tab-item(aria-controls='tab_item-0',role='tab')
+                                span Descripción
+                            li.resp-tab-item(aria-controls='tab_item-1',role='tab')
+                                span Información Adicional
+                            li.resp-tab-item(aria-controls='tab_item-2',role='tab')
+                                span Reviews
+                        .resp-tabs-container
+                            .tab-1.resp-tab-content(aria-labelledby='tab_item-0')
+                                .facts
+                                    ul.tab_list
+                                        li
+                                            a(href='#')= product.description
+                            .tab-1.resp-tab-content(aria-labelledby='tab_item-1')
+                                .facts
+                                    ul.tab_list
+                                        li
+                                            a(href='#')= product.additionalInfo
+                            .tab-1.resp-tab-content(aria-labelledby='tab_item-2')
+                                .facts
+                                    ul.tab_list
+                                        each review in product.reviews
+                                            li
+                                                a(href='#')= review.review
+            .col-md-3.tabs
+                h3.m_1 Productos Relacionados
+                for rel in product.related
+                    ul.product
+                        li.product_img
+                            img.img-responsive(src='/images/'+rel.images[0])
+                        li.product_desc
+                            h4
+                                a(href='#')= rel.name
+                                p.single_price= rel.price
+                                a.link-cart(href='#') Agregar a favoritos
+                                a.link-cart(href='#') Comprar
+                        .clearfix
+            .clearfix
+
+
+
+
+
+

@@ -1,7 +1,6 @@
 // grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
 require('mongoose-currency').loadType(mongoose);
 var Currency = mongoose.Types.Currency;
 
@@ -12,11 +11,7 @@ var productSchema = new Schema({
         required: true,
         unique: true    
     },
-    image:  {
-        type: String,
-        required: true,
-        default: ''
-    },
+    images: [String],
     category:  {
         type: String,
         required: true,
@@ -30,6 +25,7 @@ var productSchema = new Schema({
     price: {
         type: Currency 
     },
+    discount: Number,
     description:  {
         type: String,
         required: true
@@ -39,7 +35,10 @@ var productSchema = new Schema({
         type: String,
         required: true
     },
-    quantity: Number
+    quantity: Number,
+    reviews: [{review:String}],
+    available: Boolean,
+    related: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 },
 {
     timestamps: true
