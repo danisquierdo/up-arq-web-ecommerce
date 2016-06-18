@@ -13,7 +13,8 @@ var categorySchema = new Schema({
     description: String,
     image: String,
     url: String,
-    subcategories: [{name: String, url: String}]
+    subcategories: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
+    is_subcategory: Boolean
 });
 
 // create a model using schema

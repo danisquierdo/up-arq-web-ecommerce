@@ -89,10 +89,10 @@ block content
                             img.img-responsive(src='/images/'+rel.images[0])
                         li.product_desc
                             h4
-                                a(href='#')= rel.name
-                                p.single_price= rel.price
-                                a.link-cart(href='#') Agregar a favoritos
-                                a.link-cart(href='#') Comprar
+                                a(href='/products/' + rel.id)= rel.name
+                            p.single_price= rel.price
+                            a.link-cart(href='#') Agregar a favoritos
+                            a.link-cart(href='#') Comprar
                         .clearfix
             .clearfix
 

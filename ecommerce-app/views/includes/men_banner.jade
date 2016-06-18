@@ -28,7 +28,7 @@
         .header_bottom
             .logo
                 h1
-                    a(href='#')
+                    a(href='/')
                         span.m_1 R
                         | elojes
             .menu
@@ -40,11 +40,12 @@
                                 each cat in categories
                                     .col1
                                         .h_nav
-                                            h4= cat.name
+                                            h4
+                                                a(href='/cat/' + cat.url)= cat.name
                                             ul
                                                 each sub in cat.subcategories
                                                     li
-                                                        a(href=sub.url)=sub.name
+                                                        a(href='/cat/' + cat.url + '/' + sub.url)=sub.name
                                 .col2
                                     .h_nav
                                         h4 Últimos
@@ -52,12 +53,14 @@
                                             each prod in latest
                                                 li
                                                     .p_left
-                                                        img.img-responsive(src="/images/" + prod.images[0])
+                                                        a(href='/products/' + prod.id)
+                                                            img.img-responsive(src="/images/" + prod.images[0])
                                                     .p-right
-                                                        h4=prod.name
+                                                        h4
+                                                            a(href='/products/' + prod.id)=prod.name
                                                         span.item-cat
                                                             small
-                                                                a(href='#')=prod.category
+                                                                a(href='/' + prod.category.url)=prod.category.name
                                                         span.price=prod.price
                                                     .clearfix
                     li.active.grid

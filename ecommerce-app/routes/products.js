@@ -68,10 +68,10 @@ productRouter.route('/:productId')
 
 router.get('/:id', function(req,res){
 
-    categories.find({},function (err, cat) {
+    categories.find({'is_subcategory' : false}).populate('subcategories').exec(function (err, cat) {
         if (err)  throw err;
 
-        products.find().sort({_id:-1}).limit(3).exec(function(err,prod){
+        products.find().sort({_id:-1}).limit(3).populate('category').exec(function(err,prod){
             if (err)  throw err;
 
             products.findById(req.params.id).populate('related').exec(function (err, product) {

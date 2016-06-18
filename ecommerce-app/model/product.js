@@ -12,11 +12,8 @@ var productSchema = new Schema({
         unique: true    
     },
     images: [String],
-    category:  {
-        type: String,
-        required: true,
-        default: ''
-    },
+    category:  { type: Schema.Types.ObjectId, ref: 'Category' },
+    subcategory: { type: Schema.Types.ObjectId, ref: 'Category' },
     label:  {
         type: String,
         required: true,
