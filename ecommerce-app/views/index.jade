@@ -1,70 +1,8 @@
 extends layout
 
+block banner
+  include ./includes/banner.jade
 block content
-  .banner
-    .container
-      .header_top
-        .header_top_left
-          .box_11
-            a(href='/')
-              h4
-                p Cart:
-                  span.simpleCart_total
-                  |(
-                  span#simpleCart_quantity.simpleCart_quantity
-                  | items)
-                img(src="/images/bag.png")
-                .clearfix
-          p.empty
-            a.simpleCart_empty(href='#') Carrito Vacío
-          .clearfix
-        .header_top_right
-          ul.header_user_info
-            a.login(href='#')
-              i.user
-              li.user_desc Cuenta
-          .clearfix
-        .clearfix
-      .header_bottom
-        .logo
-          h1
-            a(href='#')
-              span.m_1 R
-              |elojes
-        .menu
-          ul.megamenu.skyblue
-            li
-              a.color4(href='#') Productos
-                .megapanel
-                  .row
-                    each cat in categories
-                      .col1
-                        .h_nav
-                          h4= cat.name
-                          ul
-                            each sub in cat.subcategories
-                              li
-                                a(href=sub.url)=sub.name
-                    .col2
-                      .h_nav
-                        h4 Últimos
-                        ul
-                          each prod in latest
-                            li
-                              .p_left
-                                img.img-responsive(src="/images/"+prod.images[0])
-                              .p-right
-                                h4=prod.name
-                                span.item-cat
-                                  small
-                                    a(href='#')=prod.category
-                                span.price=prod.price
-                              .clearfix
-            li.active.grid
-              a.color3(href='#') Promos
-            li
-              a.color7(href='#') Novedades
-            .clearfix
   .main
      .container
        ul.content-home
