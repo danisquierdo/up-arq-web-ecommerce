@@ -1,0 +1,78 @@
+//
+   Created by Dany on 6/25/2016.
+extends layout
+block head
+    script(src='/javascripts/cbpViewModeSwitch.js')
+    script(src='/javascripts/classie.js')
+    link(rel='stylesheet' href='/stylesheets/component.css')
+block banner
+    include ./includes/men_banner.jade
+block content
+    .men
+        .container
+            .col-md-4.sidebar_men
+                h3 Subcategorías
+                ul.product-categories.color
+                    for sub in category.subcategories
+                        li.cat-item
+                            a(href='')= sub.name
+                                span.count= sub.quantity
+            .col-md-8.mens_right
+                .dreamcrub
+                    ul.breadcrumbs
+                        li.home
+                            a(href='/' title='Ir a página inicial') Inicio
+                            span &nbsp;>&nbsp;
+                        li.home
+                            = category.name
+                    .clearfix
+                    .sort
+                        .sort-by
+                            label Ordenar por &nbsp;
+                            select
+                                option Nombre
+                                option Precio
+                            a(href='#')
+                                img.v-middle(src='/images/arrow2.gif')
+                    ul.women_pagenation.dc_paginationA.dc_paginationA06
+                        li
+                            a.previous Página:
+                        li.active
+                            a 1
+                        li
+                            a 2
+                    .clearfix
+                .cbp-vm-switcher.cbp.cbp-vm-view-grid#cpb-vm
+                    .cbp-vm-options
+                        a.cbp-vm-icon.cbp-vm-grid.cbp-vm-selected(data-view='cbp-vm-view-grid' title='Grilla') Vista de Grilla
+                        a.cbp-vm-icon.cbp-vm-list(data-view='bp-vm-view-list' title='Lista') Vista de Lista
+                    .pages
+                        .limiter.visible-desktop
+                            label Ver &nbsp;
+                            select
+                                option(selected='selected') 9
+                                option 15
+                                option 30
+                            | &nbsp; por página
+                    .clearfix
+                    ul
+                        for prod in products
+                            li.simpleCart_shelfItem
+                                a.cbp-vm-image(href='/products/'+prod.id)
+                                    .view.view-first
+                                        .inner_content.clearfix
+                                            .product_image
+                                                .mask1
+                                                    img.img-responsive.zoom-img(src='/images/'+prod.images[0])
+                                                .mask
+                                                    .info Vista Rápida
+                                                .product_container
+                                                    h4= prod.name
+                                                    p= prod.subcategory.name
+                                                    .price.mount.item_price
+                                                        = prod.price
+                                                    a.button.item_add.cbp-vm-icon.cbp-vm-add(href='#') Agregar al carrito
+
+
+
+
