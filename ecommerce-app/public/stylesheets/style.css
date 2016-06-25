@@ -423,6 +423,11 @@ span.m_1 {
 	margin-right:1em;
 	padding-bottom:2em;
 }
+
+.p_left img{
+	width: 60px;
+	height: 80px;
+}
 .p_right{
 	float:left;
 }

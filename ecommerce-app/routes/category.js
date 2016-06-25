@@ -25,7 +25,8 @@ router.get('/:category', function(req,res){
                             categories: cat,
                             latest: prod,
                             category: category,
-                            products: products
+                            products: products,
+                            subcategory: null
                         });
 
                 });

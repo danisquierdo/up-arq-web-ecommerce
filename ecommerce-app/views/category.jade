@@ -15,7 +15,7 @@ block content
                 ul.product-categories.color
                     for sub in category.subcategories
                         li.cat-item
-                            a(href='')= sub.name
+                            a(href='/cat/' + category.url + '/' + sub.url)= sub.name
                                 span.count= sub.quantity
             .col-md-8.mens_right
                 .dreamcrub
@@ -24,37 +24,42 @@ block content
                             a(href='/' title='Ir a página inicial') Inicio
                             span &nbsp;>&nbsp;
                         li.home
-                            = category.name
+                            a(href='/cat/' + category.url)= category.name
+                            if subcategory
+                                span &nbsp;>&nbsp;
+                        if subcategory
+                            li.home
+                                a(href='/cat/' + category.url + '/' + subcategory.url)= subcategory.name
                     .clearfix
-                    .sort
-                        .sort-by
-                            label Ordenar por &nbsp;
-                            select
-                                option Nombre
-                                option Precio
-                            a(href='#')
-                                img.v-middle(src='/images/arrow2.gif')
-                    ul.women_pagenation.dc_paginationA.dc_paginationA06
-                        li
-                            a.previous Página:
-                        li.active
-                            a 1
-                        li
-                            a 2
-                    .clearfix
+                    //.sort
+                    //    .sort-by
+                    //        label Ordenar por &nbsp;
+                    //        select
+                    //            option Nombre
+                    //            option Precio
+                    //        a(href='#')
+                    //            img.v-middle(src='/images/arrow2.gif')
+                    //ul.women_pagenation.dc_paginationA.dc_paginationA06
+                    //    li
+                    //        a.previous Página:
+                    //    li.active
+                    //        a 1
+                    //    li
+                    //        a 2
+                    //.clearfix
                 .cbp-vm-switcher.cbp.cbp-vm-view-grid#cpb-vm
-                    .cbp-vm-options
-                        a.cbp-vm-icon.cbp-vm-grid.cbp-vm-selected(data-view='cbp-vm-view-grid' title='Grilla') Vista de Grilla
-                        a.cbp-vm-icon.cbp-vm-list(data-view='bp-vm-view-list' title='Lista') Vista de Lista
-                    .pages
-                        .limiter.visible-desktop
-                            label Ver &nbsp;
-                            select
-                                option(selected='selected') 9
-                                option 15
-                                option 30
-                            | &nbsp; por página
-                    .clearfix
+                    //.cbp-vm-options
+                    //    a.cbp-vm-icon.cbp-vm-grid.cbp-vm-selected(data-view='cbp-vm-view-grid' title='Grilla') Vista de Grilla
+                    //    a.cbp-vm-icon.cbp-vm-list(data-view='bp-vm-view-list' title='Lista') Vista de Lista
+                    //.pages
+                    //    .limiter.visible-desktop
+                    //        label Ver &nbsp;
+                    //        select
+                    //            option(selected='selected') 9
+                    //            option 15
+                    //            option 30
+                    //        | &nbsp; por página
+                    //.clearfix
                     ul
                         for prod in products
                             li.simpleCart_shelfItem
