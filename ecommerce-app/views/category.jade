@@ -63,6 +63,7 @@ block content
                     ul
                         for prod in products
                             li.simpleCart_shelfItem
+                                p.item_prodId(hidden='hidden')= prod.id
                                 a.cbp-vm-image(href='/products/'+prod.id)
                                     .view.view-first
                                         .inner_content.clearfix
@@ -72,7 +73,7 @@ block content
                                                 .mask
                                                     .info Vista Rápida
                                                 .product_container
-                                                    h4= prod.name
+                                                    h4.item_name= prod.name
                                                     p= prod.subcategory.name
                                                     .price.mount.item_price
                                                         = prod.price
