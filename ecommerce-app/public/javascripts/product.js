@@ -12,10 +12,10 @@ $(document).ready(function () {
      controlNav: "thumbnails"
    });
 
-    simpleCart({
+/*    simpleCart({
         cartColumns: [
             { attr: "prodId", Name: "ProductId", label: false },
             { attr: "price" , label: "Price", view: 'currency' }
         ]
-    });
+    });*/
  });
