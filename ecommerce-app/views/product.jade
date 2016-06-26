@@ -2,6 +2,11 @@
    Created by Dany on 6/16/2016.
 
 extends layout
+block head
+    script(src="/javascripts/easyResponsiveTabs.js")
+    script(src="/javascripts/product.js")
+    script(src="/javascripts/jquery.flexslider.js")
+    link(rel='stylesheet', href='/stylesheets/flexslider.css')
 block banner
     include ./includes/men_banner.jade
 block content
@@ -17,7 +22,8 @@ block content
                                         img(src='/images/'+img)
                         .clearfix
                     .cont1.span_2_of_a1.simpleCart_shelfItem
-                        h1= product.name
+                        h1.item_name= product.name
+                        p.item_prodId(hidden='hidden')= product.id
                         p.availability Disponibilidad:
                             span.color
                                 if product.available
@@ -37,8 +43,8 @@ block content
                         if product.available
                             .quantity_box
                                 ul.product-qty
-                                    span Quantity:
-                                    select
+                                    span Cantidad:
+                                    select.item_quantity
                                         -n=1
                                         while n <= product.quantity
                                             option= n++
@@ -84,19 +90,18 @@ block content
             .col-md-3.tabs
                 h3.m_1 Productos Relacionados
                 for rel in product.related
-                    ul.product
+                    ul.product.simpleCart_shelfItem
+                        li.item_prodId(hidden='hidden')= rel.id
                         li.product_img
                             img.img-responsive(src='/images/'+rel.images[0])
                         li.product_desc
                             h4
-                                a(href='/products/' + rel.id)= rel.name
-                            p.single_price= rel.price
+                                a.item_name(href='/products/' + rel.id)= rel.name
+                            p.single_price.item_price= rel.price
                             a.link-cart(href='#') Agregar a favoritos
-                            a.link-cart(href='#') Comprar
+                            a.link-cart.item_add(href='#') Comprar
                         .clearfix
             .clearfix
-
-
 
 
 
