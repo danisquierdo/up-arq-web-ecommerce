@@ -64,6 +64,7 @@ block content
                         for prod in products
                             li.simpleCart_shelfItem
                                 p.item_prodId(hidden='hidden')= prod.id
+                                p.item_image(hidden='hidden')= product.images[0]
                                 a.cbp-vm-image(href='/products/'+prod.id)
                                     .view.view-first
                                         .inner_content.clearfix
