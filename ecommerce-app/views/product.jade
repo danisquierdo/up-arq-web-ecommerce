@@ -24,6 +24,7 @@ block content
                     .cont1.span_2_of_a1.simpleCart_shelfItem
                         h1.item_name= product.name
                         p.item_prodId(hidden='hidden')= product.id
+                        p.item_image(hidden='hidden')= product.images[0]
                         p.availability Disponibilidad:
                             span.color
                                 if product.available
@@ -92,6 +93,7 @@ block content
                 for rel in product.related
                     ul.product.simpleCart_shelfItem
                         li.item_prodId(hidden='hidden')= rel.id
+                        li.item_image(hidden='hidden')= product.images[0]
                         li.product_img
                             img.img-responsive(src='/images/'+rel.images[0])
                         li.product_desc
