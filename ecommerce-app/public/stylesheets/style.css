@@ -918,7 +918,7 @@ a.create:hover, .account-top input[type="submit"]:hover, .register-but form inpu
 .register-but{
 	margin-top:1em;
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
 	background:#F9D9BE;
 	color: #000;
 	font-size:1em;

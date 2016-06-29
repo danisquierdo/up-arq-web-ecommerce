@@ -1,0 +1,38 @@
+//
+   Created by Dany on 6/28/2016.
+
+extends layout
+block banner
+    include ./includes/men_banner.jade
+block content
+    .account-in
+        if successMessage
+            .alert.alert-danger
+                p= successMessage
+        if errorMessage
+            .alert.alert-success
+                p= errorMessage
+        .container
+            form(action='/users/register' method='post')
+               .register-top-grid
+                   h2 Información Personal
+                   div
+                       span Nombre de Usuario
+                       input(type='text' name='username')
+                   div
+                       span Email
+                       input(type='text' name='email')
+               .clearfix
+               .register-bottom-grid
+                   h2 Información de Login
+                   div
+                       span Contraseña
+                       input(type='password' name='password')
+                   div
+                       span Confirmar Contraseña
+                       input(type='password')
+               .clearfix
+               .register-but
+                   input(type='submit' value='Registrarse')
+
+
