@@ -28,7 +28,7 @@ router.post('/login', function(req, res, next) {
 
   passport.authenticate('local', function(err, user, info) {
     if (err) {
-      return next(err);
+        res.render('error', {message: 'Fallo en el login', error: err});
     }
 
     if (!user) {
@@ -86,9 +86,11 @@ router.post('/register', function(req, res) {
         if (err) {
           res.render('error', {message: 'Fallo en el registro', error: err})
         }
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/users/login');
-        });
+      else{
+            passport.authenticate('local')(req, res, function () {
+                res.redirect('/users/login');
+            });
+        }
       });
 });
 
